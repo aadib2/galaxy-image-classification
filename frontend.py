@@ -16,10 +16,12 @@ from utils import preprocess_image_st, predict, visualize_predictions_st
 st.title("Galaxy Classification Frontend")
 st.write("Purpose of this website is to classify images of galaxies based on their morphological characteristics")
 st.write("Currently we can classify images of size 227x227 into 3 types: Spiral (S), Elliptical (E) and Spiral Barred (SB)")
-st.write("Our model's accuracy is 86.59%")
+st.markdown("Our model's accuracy is **86.59%**")
+
+st.markdown('*Note: Until an image is uploaded, you will see an error message regarding a null image_tensor. Ignore this message.*')
 
 # prompt user to enter an image
-uploaded_file = st.file_uploader("Upload a galaxy image...", type = ["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("⋆⭒˚.⋆🔭 Upload a galaxy image...", type = ["jpg", "jpeg", "png"])
 
 # if image was uploaded
 if uploaded_file is not None:
@@ -39,7 +41,6 @@ transform = transforms.Compose({
     transforms.Resize((227,277)),
     transforms.ToTensor(),
 })
-
 
 # Apply preprocessing and display the transformed image
 if uploaded_file is not None:
